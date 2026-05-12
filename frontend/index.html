@@ -1,7 +1,246 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Connexa</title>
+
+  <style>
+    :root {
+      --primary: #0056d6;
+      --primary-hover: #0047b3;
+      --background: #f5f9ff;
+      --text: #111827;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --radius: 18px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      color: var(--primary);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .highlight {
+      color: var(--primary);
+    }
+
+    .description {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 540px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 1rem 1.6rem;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 86, 214, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 20px 50px rgba(0, 86, 214, 0.08);
+      border: 1px solid rgba(0, 86, 214, 0.1);
+    }
+
+    .card h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature {
+      background: #f8fbff;
+      border-radius: 14px;
+      padding: 1rem;
+      border: 1px solid rgba(0, 86, 214, 0.08);
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: var(--text);
+    }
+
+    .feature span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1.5rem;
+      }
+
+      .container {
+        gap: 2rem;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
 <body>
-  <h1>Teste GitHub Pages</h1>
-  <a href="/cadastro.html">Ir para cadastro</a>
+
+  <main class="container">
+
+    <section class="content">
+      <div class="logo">Connexa</div>
+
+      <h1>
+        Conectando estudantes através de
+        <span class="highlight">grupos de estudo.</span>
+      </h1>
+
+      <p class="description">
+        Plataforma acadêmica desenvolvida para facilitar a criação
+        de grupos de estudo, colaboração entre alunos e conexão
+        universitária de forma simples e moderna.
+      </p>
+
+      <div class="buttons">
+        <a href="/cadastro.html" class="btn btn-primary">
+          Criar Conta
+        </a>
+
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>O que você encontra no Connexa?</h2>
+
+      <div class="feature-list">
+
+        <div class="feature">
+          <strong>📚 Grupos de estudo</strong>
+          <span>
+            Encontre estudantes com interesses semelhantes
+            e participe de grupos acadêmicos.
+          </span>
+        </div>
+
+        <div class="feature">
+          <strong>🎯 Organização acadêmica</strong>
+          <span>
+            Facilite a comunicação e colaboração entre alunos.
+          </span>
+        </div>
+
+        <div class="feature">
+          <strong>🔒 Ambiente seguro</strong>
+          <span>
+            Cadastro com email institucional para maior confiabilidade.
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Connexa © 2026
+  </footer>
+
 </body>
 </html>
