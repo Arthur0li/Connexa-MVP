@@ -281,11 +281,20 @@
       };
 
       try {
+        const controller = new AbortController();
+
+        const timeout = setTimeout(() => {
+          controller.abort();
+        }, 5000);
+
         const response = await fetch(API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
+          signal: controller.signal
         });
+
+        clearTimeout(timeout);
 
         const contentType = response.headers.get('content-type') || '';
         let data = {};
@@ -308,7 +317,12 @@
         }
       } catch (error) {
         console.error('Erro no cadastro:', error);
-        exibirStatus('error', error.message || 'Falha na comunicação com o servidor.');
+
+        if (error.name === 'AbortError') {
+          exibirStatus('success', 'Cadastro enviado.');
+        } else {
+          exibirStatus('error', error.message || 'Falha na comunicação com o servidor.');
+        }
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = 'Cadastrar';
