@@ -27,5 +27,15 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arthur0li/Connexa-MVP.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Arthur0li/Connexa-MVP/issues"
+  },
+  "homepage": "https://github.com/Arthur0li/Connexa-MVP#readme"
+  
 }
