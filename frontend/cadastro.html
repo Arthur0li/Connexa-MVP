@@ -207,7 +207,7 @@
 
   <script>
     // TASK-005: Formulário frontend que consome POST /api/usuarios/cadastro
-    const API_URL = '/api/usuarios/cadastro';
+    const API_URL = 'http://localhost:3000/api/usuarios/cadastro';
 
     const form = document.getElementById('cadastro-form');
     const nomeInput = document.getElementById('nome');
@@ -287,7 +287,15 @@
           body: JSON.stringify(payload),
         });
 
-        const data = await response.json();
+        const contentType = response.headers.get('content-type') || '';
+        let data = {};
+
+        if (contentType.includes('application/json')) {
+          data = await response.json();
+        } else {
+          const texto = await response.text();
+          console.log('Resposta não JSON:', texto);
+        }
 
         if (!response.ok) {
           const mensagem = data.erro || 'Ocorreu um erro no cadastro. Tente novamente.';
@@ -297,8 +305,8 @@
           form.reset();
         }
       } catch (error) {
-        exibirStatus('error', 'Não foi possível conectar ao servidor. Tente novamente mais tarde.');
-        console.error('Erro de rede:', error);
+        console.error('Erro no cadastro:', error);
+        exibirStatus('error', error.message || 'Falha na comunicação com o servidor.');
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = 'Cadastrar';
