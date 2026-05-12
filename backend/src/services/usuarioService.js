@@ -39,16 +39,18 @@ async function cadastrarUsuario({ nome, email, senha }) {
   const senhaHash = await bcrypt.hash(senha, SALT_ROUNDS);
   const usuario = await Usuario.criarAsync({ nome, email, senha: senhaHash });
 
-  let emailEnviado = false;
+  /* let emailEnviado = false;
   try {
     await sendConfirmationEmail({ nome, email });
     emailEnviado = true;
   } catch (err) {
     console.error('Falha ao enviar email de confirmação:', err);
-  }
+  }*/
 
+  const emailEnviado = false;
+  
   return { usuario, emailEnviado };
-}
+} 
 
 async function buscarUsuarioPorId(id) {
   if (!id) {
