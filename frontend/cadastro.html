@@ -294,11 +294,13 @@
           data = await response.json();
         } else {
           const texto = await response.text();
-          console.log('Resposta não JSON:', texto);
+          console.log('Resposta do servidor:', texto);
+          alert(texto);
         }
 
         if (!response.ok) {
-          const mensagem = data.erro || 'Ocorreu um erro no cadastro. Tente novamente.';
+          console.log(data);
+          const mensagem = data.erro || JSON.stringify(data) || 'Erro desconhecido';
           exibirStatus('error', mensagem);
         } else {
           exibirStatus('success', data.mensagem || 'Cadastro realizado com sucesso!');
